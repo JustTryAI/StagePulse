@@ -5,7 +5,7 @@ import { defaultPresets } from './presets';
 
 const TimersApp: React.FC = () => {
   const { state, dispatch } = useTimers();
-
+  
   return (
     <div>
       <h1>StagePulse</h1>
