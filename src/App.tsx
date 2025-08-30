@@ -1,25 +1,38 @@
 import React from 'react';
 import Timer from './components/Timer';
-import { TimerConfig } from './types';
+import { TimersProvider, useTimers } from './context/TimersContext';
+import { defaultPresets } from './presets';
+import { useTranslation } from 'react-i18next';
 
-const initialTimers: TimerConfig[] = [
-  { id: 't1', title: 'Countdown 5m', kind: 'countdown', duration: 5 * 60 * 1000 },
-  { id: 't2', title: 'Count Up', kind: 'countup' },
-  { id: 't3', title: 'Clock', kind: 'clock' }
-];
-
-// App renders multiple timers using configuration
-const App: React.FC = () => {
-  const [timers] = React.useState<TimerConfig[]>(initialTimers);
+const TimersApp: React.FC = () => {
+  const { state, dispatch } = useTimers();
+  const { t, i18n } = useTranslation();
 
   return (
     <div>
-      <h1>StagePulse</h1>
-      {timers.map((t) => (
+      <h1>{t('title')}</h1>
+      <div>
+        <button onClick={() => i18n.changeLanguage('en')}>{t('language.en')}</button>
+        <button onClick={() => i18n.changeLanguage('es')}>{t('language.es')}</button>
+      </div>
+      <div>
+        {defaultPresets.map((p) => (
+          <button key={p.title} onClick={() => dispatch({ type: 'add', payload: p })}>
+            {t('addPreset', { title: p.title })}
+          </button>
+        ))}
+      </div>
+      {state.timers.map((t) => (
         <Timer key={t.id} config={t} />
       ))}
     </div>
   );
 };
+
+const App: React.FC = () => (
+  <TimersProvider>
+    <TimersApp />
+  </TimersProvider>
+);
 
 export default App;
