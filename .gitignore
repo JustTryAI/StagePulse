@@ -57,3 +57,7 @@ ui-debug.log
 # Generated files
 *.g.dart
 *.freezed.dart
+
+# Node / web
+node_modules
+dist
