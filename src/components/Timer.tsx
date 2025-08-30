@@ -6,7 +6,11 @@ import TimerControls from './TimerControls';
 
 // Renders a single timer with display and controls
 const Timer: React.FC<{ config: TimerConfig }> = ({ config }) => {
-  const { millis, running, start, pause, reset } = useTimer(config.kind, config.duration);
+  const { millis, running, start, pause, reset } = useTimer(
+    config.kind,
+    config.duration,
+    config.startAt
+  );
 
   return (
     <div style={{ marginBottom: '2rem' }}>

@@ -1,11 +1,17 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { TimerConfig, TimerKind } from '../types';
 
-interface AddTimerPayload { title: string; kind: TimerKind; duration?: number; }
+interface AddTimerPayload {
+  title: string;
+  kind: TimerKind;
+  duration?: number;
+  startAt?: number;
+}
 
 type Action =
   | { type: 'add'; payload: AddTimerPayload }
-  | { type: 'remove'; id: string };
+  | { type: 'remove'; id: string }
+  | { type: 'schedule'; id: string; startAt: number };
 
 export interface TimersState {
   timers: TimerConfig[];
@@ -22,11 +28,18 @@ export function timerReducer(state: TimersState, action: Action): TimersState {
         title: action.payload.title,
         kind: action.payload.kind,
         duration: action.payload.duration,
+        startAt: action.payload.startAt,
       };
       return { timers: [...state.timers, newTimer] };
     }
     case 'remove':
       return { timers: state.timers.filter((t) => t.id !== action.id) };
+    case 'schedule':
+      return {
+        timers: state.timers.map((t) =>
+          t.id === action.id ? { ...t, startAt: action.startAt } : t
+        ),
+      };
     default:
       return state;
   }
