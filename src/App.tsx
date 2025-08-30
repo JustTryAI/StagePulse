@@ -8,10 +8,6 @@ const TimersApp: React.FC = () => {
   const { state, dispatch } = useTimers();
   const { t, i18n } = useTranslation();
 
-
-const TimersApp: React.FC = () => {
-  const { state, dispatch } = useTimers();
-  
   return (
     <div>
       <h1>{t('title')}</h1>
@@ -20,11 +16,17 @@ const TimersApp: React.FC = () => {
         <button onClick={() => i18n.changeLanguage('es')}>{t('language.es')}</button>
       </div>
       <div>
-        {defaultPresets.map((p) => (
-          <button key={p.title} onClick={() => dispatch({ type: 'add', payload: p })}>
-            {t('addPreset', { title: p.title })}
-          </button>
-        ))}
+        {defaultPresets.map((p) => {
+          const title = t(p.titleKey);
+          return (
+            <button
+              key={p.titleKey}
+              onClick={() => dispatch({ type: 'add', payload: { ...p, title } })}
+            >
+              {t('addPreset', { title })}
+            </button>
+          );
+        })}
       </div>
       {state.timers.map((t) => (
         <Timer key={t.id} config={t} />

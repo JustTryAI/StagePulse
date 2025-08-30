@@ -1,12 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTimers } from '../context/TimersContext';
 import Timer from './Timer';
 
 const TimerList: React.FC = () => {
   const { state, dispatch } = useTimers();
+  const { t } = useTranslation();
 
   if (state.timers.length === 0) {
-    return <p>No timers added.</p>;
+    return <p>{t('timerList.empty')}</p>;
   }
 
   return (
@@ -14,7 +16,9 @@ const TimerList: React.FC = () => {
       {state.timers.map((t) => (
         <div key={t.id}>
           <Timer config={t} />
-          <button onClick={() => dispatch({ type: 'remove', id: t.id })}>Remove</button>
+          <button onClick={() => dispatch({ type: 'remove', id: t.id })}>
+            {t('timerList.remove')}
+          </button>
         </div>
       ))}
     </div>

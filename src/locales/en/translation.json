@@ -4,5 +4,27 @@
   "language": {
     "en": "English",
     "es": "Español"
+  },
+  "form": {
+    "titlePlaceholder": "Title",
+    "countdown": "Countdown",
+    "countup": "Count Up",
+    "clock": "Clock",
+    "addTimer": "Add Timer"
+  },
+  "timerList": {
+    "empty": "No timers added.",
+    "remove": "Remove"
+  },
+  "controls": {
+    "pause": "Pause",
+    "start": "Start",
+    "reset": "Reset"
+  },
+  "preset": {
+    "countdown1m": "Countdown 1m",
+    "countdown5m": "Countdown 5m",
+    "countup": "Count Up",
+    "clock": "Clock"
   }
 }

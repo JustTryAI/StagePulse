@@ -28,7 +28,10 @@ describe('timerReducer', () => {
 
   it('adds a timer from preset', () => {
     const preset = defaultPresets[0];
-    const state = timerReducer(initialState, { type: 'add', payload: preset });
-    expect(state.timers[0].title).toBe(preset.title);
+    const state = timerReducer(initialState, {
+      type: 'add',
+      payload: { ...preset, title: 'Countdown 1m' },
+    });
+    expect(state.timers[0].title).toBe('Countdown 1m');
   });
 });

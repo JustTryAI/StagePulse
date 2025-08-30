@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TimerKind } from '../types';
 import { useTimers } from '../context/TimersContext';
 
 const TimerForm: React.FC = () => {
   const { dispatch } = useTimers();
+  const { t } = useTranslation();
   const [title, setTitle] = useState('');
   const [kind, setKind] = useState<TimerKind>('countdown');
   const [duration, setDuration] = useState(60);
@@ -17,15 +19,15 @@ const TimerForm: React.FC = () => {
   return (
     <form onSubmit={onSubmit} style={{ marginBottom: '1rem' }}>
       <input
-        placeholder="Title"
+        placeholder={t('form.titlePlaceholder')}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
       />
       <select value={kind} onChange={(e) => setKind(e.target.value as TimerKind)}>
-        <option value="countdown">Countdown</option>
-        <option value="countup">Count Up</option>
-        <option value="clock">Clock</option>
+        <option value="countdown">{t('form.countdown')}</option>
+        <option value="countup">{t('form.countup')}</option>
+        <option value="clock">{t('form.clock')}</option>
       </select>
       {kind === 'countdown' && (
         <input
@@ -35,7 +37,7 @@ const TimerForm: React.FC = () => {
           min={1}
         />
       )}
-      <button type="submit">Add Timer</button>
+      <button type="submit">{t('form.addTimer')}</button>
     </form>
   );
 };
