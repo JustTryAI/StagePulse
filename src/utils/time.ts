@@ -24,3 +24,4 @@ export function formatTime(ms: number): string {
 export function addSeconds(ms: number, sec: number): number {
   return ms + sec * 1000;
 }
+

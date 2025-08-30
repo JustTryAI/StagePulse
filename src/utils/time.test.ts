@@ -11,3 +11,4 @@ test('formatTime formats mm:ss', () => {
 test('formatTime formats hh:mm:ss when over an hour', () => {
   expect(formatTime(3661000)).toBe('01:01:01');
 });
+
