@@ -4,5 +4,27 @@
   "language": {
     "en": "Inglés",
     "es": "Español"
+  },
+  "form": {
+    "titlePlaceholder": "Título",
+    "countdown": "Cuenta regresiva",
+    "countup": "Conteo ascendente",
+    "clock": "Reloj",
+    "addTimer": "Agregar temporizador"
+  },
+  "timerList": {
+    "empty": "No hay temporizadores.",
+    "remove": "Eliminar"
+  },
+  "controls": {
+    "pause": "Pausar",
+    "start": "Iniciar",
+    "reset": "Reiniciar"
+  },
+  "preset": {
+    "countdown1m": "Cuenta regresiva 1m",
+    "countdown5m": "Cuenta regresiva 5m",
+    "countup": "Conteo ascendente",
+    "clock": "Reloj"
   }
 }
