@@ -1,10 +1,10 @@
 # StagePulse To-Do
 
 ## Core Features
- - [x] Timer model supporting countdown, count-up, and time-of-day
- - [x] Manage multiple timers with scheduling
- - [ ] Timer presets for quick setup
- - [x] Basic timer management UI (add/remove)
+- [x] Timer model supporting countdown, count-up, and time-of-day
+- [x] Manage multiple timers with scheduling
+- [x] Timer presets for quick setup
+- [x] Basic timer management UI (add/remove)
 - [ ] Real-time sync via Firebase Firestore
 - [ ] Role-based authentication (Controller, Viewer, Moderator, Operator)
 - [ ] Role-based links and QR code sharing

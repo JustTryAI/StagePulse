@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { TimerConfig, TimerKind } from '../types';
 
-interface AddTimerPayload {
+export interface AddTimerPayload {
   title: string;
   kind: TimerKind;
   duration?: number;

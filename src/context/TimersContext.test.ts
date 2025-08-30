@@ -1,4 +1,5 @@
 import { timerReducer, initialState } from './TimersContext';
+import { defaultPresets } from '../presets';
 
 describe('timerReducer', () => {
   it('adds a timer', () => {
