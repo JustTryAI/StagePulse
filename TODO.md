@@ -6,7 +6,7 @@
 - [x] Timer presets for quick setup
 - [x] Basic timer management UI (add/remove)
 - [x] Internationalization (i18n) and localization (l10n)
-- [ ] Real-time sync via Firebase Firestore
+- [x] Real-time sync via Firebase Firestore
 - [ ] Role-based authentication (Controller, Viewer, Moderator, Operator)
 - [ ] Role-based links and QR code sharing
 - [ ] Messaging system with presets and placeholders
