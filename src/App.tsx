@@ -3,7 +3,13 @@ import Timer from './components/Timer';
 import { TimerConfig } from './types';
 
 const initialTimers: TimerConfig[] = [
-  { id: 't1', title: 'Countdown 5m', kind: 'countdown', duration: 5 * 60 * 1000 },
+  {
+    id: 't1',
+    title: 'Countdown 5m',
+    kind: 'countdown',
+    duration: 5 * 60 * 1000,
+    startAt: Date.now() + 60_000, // starts in one minute
+  },
   { id: 't2', title: 'Count Up', kind: 'countup' },
   { id: 't3', title: 'Clock', kind: 'clock' }
 ];

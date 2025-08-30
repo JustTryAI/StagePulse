@@ -5,4 +5,5 @@ export interface TimerConfig {
   title: string;
   kind: TimerKind;
   duration?: number; // used for countdown timers
+  startAt?: number; // optional start time in ms for scheduling
 }
