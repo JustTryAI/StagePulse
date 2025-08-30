@@ -25,4 +25,10 @@ describe('timerReducer', () => {
     const scheduled = timerReducer(added, { type: 'schedule', id, startAt });
     expect(scheduled.timers[0].startAt).toBe(startAt);
   });
+
+  it('adds a timer from preset', () => {
+    const preset = defaultPresets[0];
+    const state = timerReducer(initialState, { type: 'add', payload: preset });
+    expect(state.timers[0].title).toBe(preset.title);
+  });
 });

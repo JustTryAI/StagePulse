@@ -2,17 +2,27 @@ import React from 'react';
 import Timer from './components/Timer';
 import { TimersProvider, useTimers } from './context/TimersContext';
 import { defaultPresets } from './presets';
+import { useTranslation } from 'react-i18next';
+
+const TimersApp: React.FC = () => {
+  const { state, dispatch } = useTimers();
+  const { t, i18n } = useTranslation();
+
 
 const TimersApp: React.FC = () => {
   const { state, dispatch } = useTimers();
   
   return (
     <div>
-      <h1>StagePulse</h1>
+      <h1>{t('title')}</h1>
+      <div>
+        <button onClick={() => i18n.changeLanguage('en')}>{t('language.en')}</button>
+        <button onClick={() => i18n.changeLanguage('es')}>{t('language.es')}</button>
+      </div>
       <div>
         {defaultPresets.map((p) => (
           <button key={p.title} onClick={() => dispatch({ type: 'add', payload: p })}>
-            Add {p.title}
+            {t('addPreset', { title: p.title })}
           </button>
         ))}
       </div>

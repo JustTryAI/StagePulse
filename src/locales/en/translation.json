@@ -1,0 +1,8 @@
+{
+  "title": "StagePulse",
+  "addPreset": "Add {{title}}",
+  "language": {
+    "en": "English",
+    "es": "Español"
+  }
+}
