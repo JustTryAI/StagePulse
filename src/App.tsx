@@ -8,6 +8,10 @@ const TimersApp: React.FC = () => {
   const { state, dispatch } = useTimers();
   const { t, i18n } = useTranslation();
 
+
+const TimersApp: React.FC = () => {
+  const { state, dispatch } = useTimers();
+  
   return (
     <div>
       <h1>{t('title')}</h1>
