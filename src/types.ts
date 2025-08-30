@@ -1,5 +1,8 @@
 export type TimerKind = 'countdown' | 'countup' | 'clock';
 
+// Role-based authentication roles
+export type Role = 'controller' | 'viewer' | 'moderator' | 'operator';
+
 export interface TimerConfig {
   id: string;
   title: string;
