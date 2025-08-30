@@ -1,34 +1,23 @@
-import React, { useState } from 'react';
-import TimerDisplay from './components/TimerDisplay';
-import TimerControls from './components/TimerControls';
+import React from 'react';
+import Timer from './components/Timer';
+import { TimerConfig } from './types';
 
+const initialTimers: TimerConfig[] = [
+  { id: 't1', title: 'Countdown 5m', kind: 'countdown', duration: 5 * 60 * 1000 },
+  { id: 't2', title: 'Count Up', kind: 'countup' },
+  { id: 't3', title: 'Clock', kind: 'clock' }
+];
+
+// App renders multiple timers using configuration
 const App: React.FC = () => {
-  const [duration, setDuration] = useState(5 * 60 * 1000); // 5 minutes
-  const [remaining, setRemaining] = useState(duration);
-  const [running, setRunning] = useState(false);
-
-  React.useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
-    if (running) {
-      interval = setInterval(() => {
-        setRemaining((prev) => Math.max(0, prev - 1000));
-      }, 1000);
-    }
-    return () => interval && clearInterval(interval);
-  }, [running]);
-
-  const start = () => setRunning(true);
-  const pause = () => setRunning(false);
-  const reset = () => {
-    setRunning(false);
-    setRemaining(duration);
-  };
+  const [timers] = React.useState<TimerConfig[]>(initialTimers);
 
   return (
     <div>
       <h1>StagePulse</h1>
-      <TimerDisplay millis={remaining} />
-      <TimerControls onStart={start} onPause={pause} onReset={reset} running={running} />
+      {timers.map((t) => (
+        <Timer key={t.id} config={t} />
+      ))}
     </div>
   );
 };
