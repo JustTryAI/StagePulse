@@ -1,6 +1,7 @@
 import React from 'react';
 import Timer from './components/Timer';
 import { TimersProvider, useTimers } from './context/TimersContext';
+import { AuthProvider } from './context/AuthContext';
 import { defaultPresets } from './presets';
 import { useTranslation } from 'react-i18next';
 
@@ -36,9 +37,11 @@ const TimersApp: React.FC = () => {
 };
 
 const App: React.FC = () => (
-  <TimersProvider>
-    <TimersApp />
-  </TimersProvider>
+  <AuthProvider>
+    <TimersProvider>
+      <TimersApp />
+    </TimersProvider>
+  </AuthProvider>
 );
 
 export default App;
