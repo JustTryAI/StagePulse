@@ -7,7 +7,9 @@
     "build": "vite build",
     "test": "jest",
     "api": "node server/index.js",
-    "desktop": "electron ./electron/main.js"
+    "desktop": "electron ./electron/main.js",
+    "deploy": "firebase deploy --only hosting",
+    "package": "electron-packager . StagePulse --platform=linux,win32,darwin --out=dist --overwrite"
   },
   "dependencies": {
     "express": "^5.1.0",

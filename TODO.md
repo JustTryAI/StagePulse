@@ -31,4 +31,4 @@
 
 ## Testing & Deployment
 - [x] Unit tests for timer math and state
-- [ ] Firebase Hosting and Electron packaging scripts
+- [x] Firebase Hosting and Electron packaging scripts

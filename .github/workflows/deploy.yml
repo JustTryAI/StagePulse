@@ -25,9 +25,9 @@ jobs:
           if [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
             echo "$FIREBASE_SERVICE_ACCOUNT" | base64 --decode > "${HOME}/firebaseServiceAccount.json"
             export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/firebaseServiceAccount.json"
-            firebase deploy --only hosting --project "$FIREBASE_PROJECT_ID"
+            npm run deploy -- --project "$FIREBASE_PROJECT_ID"
           elif [ -n "$FIREBASE_TOKEN" ]; then
-            firebase deploy --only hosting --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT_ID"
+            npm run deploy -- --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT_ID"
           else
             echo "Firebase credentials not provided" >&2
             exit 1
