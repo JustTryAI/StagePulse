@@ -8,7 +8,7 @@
 - [x] Internationalization (i18n) and localization (l10n)
 - [x] Real-time sync via Firebase Firestore
 - [x] Role-based authentication (Controller, Viewer, Moderator, Operator)
-- [ ] Role-based links and QR code sharing
+- [x] Role-based links and QR code sharing
 - [ ] Messaging system with presets and placeholders
 - [ ] CSV import/export for timers
 - [ ] Device list with heartbeats and logs export
