@@ -41,5 +41,12 @@
     "placeholder": {
       "name": "Name"
     }
+  },
+  "devices": {
+    "title": "Devices",
+    "id": "ID",
+    "lastSeen": "Last heartbeat",
+    "logs": "Logs",
+    "export": "Export logs"
   }
 }

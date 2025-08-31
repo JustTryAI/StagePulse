@@ -9,9 +9,9 @@
 - [x] Real-time sync via Firebase Firestore
 - [x] Role-based authentication (Controller, Viewer, Moderator, Operator)
 - [x] Role-based links and QR code sharing
-- [ ] Messaging system with presets and placeholders
+- [x] Messaging system with presets and placeholders
 - [x] CSV import/export for timers
-- [ ] Device list with heartbeats and logs export
+- [x] Device list with heartbeats and logs export
 
 ## Customization
 - [ ] Themes (colors, fonts, backgrounds)
