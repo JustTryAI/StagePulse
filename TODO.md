@@ -18,10 +18,10 @@
 - [x] Viewer options: progress bar, toggle fields, mirror mode
 
 ## Integrations
-- [ ] HTTP API endpoints for timer control
-- [ ] WebSocket support for real-time updates
-- [ ] Companion/Stream Deck profile
-- [ ] OBS/vMix integration
+- [x] HTTP API endpoints for timer control
+- [x] WebSocket support for real-time updates
+ - [x] Companion/Stream Deck profile
+ - [x] OBS/vMix integration
 
 ## Desktop & Offline
 - [ ] Electron offline mode with LAN hosting

@@ -1,0 +1,18 @@
+{
+  "name": "StagePulse Demo Profile",
+  "buttons": [
+    {
+      "label": "Start Timer",
+      "type": "http",
+      "method": "POST",
+      "url": "http://localhost:3001/api/timers",
+      "body": { "id": "demo", "remaining": 300000 }
+    },
+    {
+      "label": "Delete Timer",
+      "type": "http",
+      "method": "DELETE",
+      "url": "http://localhost:3001/api/timers/demo"
+    }
+  ]
+}
