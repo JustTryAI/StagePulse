@@ -10,7 +10,7 @@
 - [x] Role-based authentication (Controller, Viewer, Moderator, Operator)
 - [x] Role-based links and QR code sharing
 - [ ] Messaging system with presets and placeholders
-- [ ] CSV import/export for timers
+- [x] CSV import/export for timers
 - [ ] Device list with heartbeats and logs export
 
 ## Customization

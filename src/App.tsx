@@ -1,14 +1,16 @@
 import React from 'react';
-import Timer from './components/Timer';
 import { TimersProvider, useTimers } from './context/TimersContext';
 import { AuthProvider } from './context/AuthContext';
 import { MessagesProvider } from './context/MessagesContext';
 import Messages from './components/Messages';
 import { defaultPresets } from './presets';
 import { useTranslation } from 'react-i18next';
+import TimerForm from './components/TimerForm';
+import TimerList from './components/TimerList';
+import TimerImportExport from './components/TimerImportExport';
 
 const TimersApp: React.FC = () => {
-  const { state, dispatch } = useTimers();
+  const { dispatch } = useTimers();
   const { t, i18n } = useTranslation();
 
   return (
@@ -31,9 +33,9 @@ const TimersApp: React.FC = () => {
           );
         })}
       </div>
-      {state.timers.map((t) => (
-        <Timer key={t.id} config={t} />
-      ))}
+      <TimerForm />
+      <TimerList />
+      <TimerImportExport />
       <Messages />
     </div>
   );

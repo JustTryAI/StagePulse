@@ -14,7 +14,11 @@
   },
   "timerList": {
     "empty": "No hay temporizadores.",
-    "remove": "Eliminar"
+    "remove": "Eliminar",
+    "exportJson": "Exportar JSON",
+    "exportCsv": "Exportar CSV",
+    "import": "Importar",
+    "importError": "Error al importar temporizadores"
   },
   "controls": {
     "pause": "Pausar",

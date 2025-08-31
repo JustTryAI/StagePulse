@@ -14,7 +14,11 @@
   },
   "timerList": {
     "empty": "No timers added.",
-    "remove": "Remove"
+    "remove": "Remove",
+    "exportJson": "Export JSON",
+    "exportCsv": "Export CSV",
+    "import": "Import",
+    "importError": "Failed to import timers"
   },
   "controls": {
     "pause": "Pause",
