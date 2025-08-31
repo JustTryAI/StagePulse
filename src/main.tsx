@@ -9,6 +9,7 @@ import RoleLinks from './components/RoleLinks';
 import { AuthProvider } from './context/AuthContext';
 import { TimersProvider } from './context/TimersContext';
 import { MessagesProvider } from './context/MessagesContext';
+import { CustomizationProvider } from './context/CustomizationContext';
 
 const path = window.location.pathname.replace(/\/$/, '').toLowerCase();
 
@@ -32,7 +33,9 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <TimersProvider>
-        <MessagesProvider>{getComponent()}</MessagesProvider>
+        <MessagesProvider>
+          <CustomizationProvider>{getComponent()}</CustomizationProvider>
+        </MessagesProvider>
       </TimersProvider>
     </AuthProvider>
   </React.StrictMode>

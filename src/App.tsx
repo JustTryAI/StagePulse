@@ -10,6 +10,7 @@ import TimerList from './components/TimerList';
 import TimerImportExport from './components/TimerImportExport';
 import DeviceList from './components/DeviceList';
 import { initHeartbeat } from './services/deviceSync';
+import CustomizationPanel from './components/CustomizationPanel';
 
 const TimersApp: React.FC = () => {
   const { dispatch } = useTimers();
@@ -44,6 +45,7 @@ const TimersApp: React.FC = () => {
       <TimerImportExport />
       <Messages />
       <DeviceList />
+      <CustomizationPanel />
     </div>
   );
 };
