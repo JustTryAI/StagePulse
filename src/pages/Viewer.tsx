@@ -1,5 +1,6 @@
 import React from 'react';
 import TimerDisplay from '../components/TimerDisplay';
+import { useMessages } from '../context/MessagesContext';
 
 // Viewer page listens to updates (placeholder without backend)
 const Viewer: React.FC = () => {
@@ -11,7 +12,14 @@ const Viewer: React.FC = () => {
     return () => clearInterval(id);
   }, []);
 
-  return <TimerDisplay millis={time} />;
+  const { state } = useMessages();
+
+  return (
+    <div>
+      <TimerDisplay millis={time} />
+      {state.current && <p>{state.current.text}</p>}
+    </div>
+  );
 };
 
 export default Viewer;

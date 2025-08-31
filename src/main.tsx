@@ -8,6 +8,7 @@ import Operator from './pages/Operator';
 import RoleLinks from './components/RoleLinks';
 import { AuthProvider } from './context/AuthContext';
 import { TimersProvider } from './context/TimersContext';
+import { MessagesProvider } from './context/MessagesContext';
 
 const path = window.location.pathname.replace(/\/$/, '').toLowerCase();
 
@@ -30,7 +31,9 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <TimersProvider>{getComponent()}</TimersProvider>
+      <TimersProvider>
+        <MessagesProvider>{getComponent()}</MessagesProvider>
+      </TimersProvider>
     </AuthProvider>
   </React.StrictMode>
 );

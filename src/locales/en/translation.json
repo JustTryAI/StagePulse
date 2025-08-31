@@ -26,5 +26,16 @@
     "countdown5m": "Countdown 5m",
     "countup": "Count Up",
     "clock": "Clock"
+  },
+  "messages": {
+    "title": "Messages",
+    "clear": "Clear",
+    "preset": {
+      "break": "Take a short break",
+      "next": "Next up: {{name}}"
+    },
+    "placeholder": {
+      "name": "Name"
+    }
   }
 }

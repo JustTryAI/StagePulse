@@ -26,5 +26,16 @@
     "countdown5m": "Cuenta regresiva 5m",
     "countup": "Conteo ascendente",
     "clock": "Reloj"
+  },
+  "messages": {
+    "title": "Mensajes",
+    "clear": "Limpiar",
+    "preset": {
+      "break": "Tómate un descanso",
+      "next": "A continuación: {{name}}"
+    },
+    "placeholder": {
+      "name": "Nombre"
+    }
   }
 }
