@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>StagePulse Timer Overlay</title>
+  <style>
+    body {
+      margin: 0;
+      background: transparent;
+      color: white;
+      font-family: sans-serif;
+      font-size: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer">--:--</div>
+  <script>
+    const ws = new WebSocket(`ws://${location.host}`);
+    let active = null;
+
+    ws.addEventListener('message', (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === 'init') {
+        active = data.timers[0];
+        render();
+      } else if (data.type === 'upsert') {
+        active = data.timer;
+        render();
+      } else if (data.type === 'delete' && active && data.id === active.id) {
+        active = null;
+        render();
+      }
+    });
+
+    function render() {
+      const el = document.getElementById('timer');
+      if (!active || active.remaining == null) {
+        el.textContent = '--:--';
+        return;
+      }
+      const total = Math.floor(active.remaining / 1000);
+      const m = String(Math.floor(total / 60)).padStart(2, '0');
+      const s = String(total % 60).padStart(2, '0');
+      el.textContent = `${m}:${s}`;
+    }
+  </script>
+</body>
+</html>
