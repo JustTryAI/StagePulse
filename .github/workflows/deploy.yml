@@ -22,7 +22,7 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
           if [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
-            echo "$FIREBASE_SERVICE_ACCOUNT" > "${HOME}/firebaseServiceAccount.json"
+            echo "$FIREBASE_SERVICE_ACCOUNT" | base64 --decode > "${HOME}/firebaseServiceAccount.json"
             export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/firebaseServiceAccount.json"
             firebase deploy --only hosting
           elif [ -n "$FIREBASE_TOKEN" ]; then
