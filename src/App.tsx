@@ -2,6 +2,8 @@ import React from 'react';
 import Timer from './components/Timer';
 import { TimersProvider, useTimers } from './context/TimersContext';
 import { AuthProvider } from './context/AuthContext';
+import { MessagesProvider } from './context/MessagesContext';
+import Messages from './components/Messages';
 import { defaultPresets } from './presets';
 import { useTranslation } from 'react-i18next';
 
@@ -32,6 +34,7 @@ const TimersApp: React.FC = () => {
       {state.timers.map((t) => (
         <Timer key={t.id} config={t} />
       ))}
+      <Messages />
     </div>
   );
 };
@@ -39,7 +42,9 @@ const TimersApp: React.FC = () => {
 const App: React.FC = () => (
   <AuthProvider>
     <TimersProvider>
-      <TimersApp />
+      <MessagesProvider>
+        <TimersApp />
+      </MessagesProvider>
     </TimersProvider>
   </AuthProvider>
 );

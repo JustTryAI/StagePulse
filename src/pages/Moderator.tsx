@@ -1,8 +1,13 @@
 import React from 'react';
+import Messages from '../components/Messages';
 
-// Moderator page placeholder
+// Moderator page renders messaging controls
 const Moderator: React.FC = () => {
-  return <div>Moderator Page</div>;
+  return (
+    <div>
+      <Messages />
+    </div>
+  );
 };
 
 export default Moderator;
