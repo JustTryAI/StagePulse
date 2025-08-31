@@ -14,8 +14,8 @@
 - [x] Device list with heartbeats and logs export
 
 ## Customization
-- [ ] Themes (colors, fonts, backgrounds)
-- [ ] Viewer options: progress bar, toggle fields, mirror mode
+- [x] Themes (colors, fonts, backgrounds)
+- [x] Viewer options: progress bar, toggle fields, mirror mode
 
 ## Integrations
 - [ ] HTTP API endpoints for timer control
