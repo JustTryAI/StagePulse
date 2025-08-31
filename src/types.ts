@@ -16,3 +16,15 @@ export interface Message {
   text: string;
   createdAt: number;
 }
+
+// Device structure for heartbeat tracking and logs
+export interface DeviceLog {
+  ts: number;
+  event: string;
+}
+
+export interface Device {
+  id: string;
+  lastSeen: number;
+  logs?: DeviceLog[];
+}

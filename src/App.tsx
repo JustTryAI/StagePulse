@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TimersProvider, useTimers } from './context/TimersContext';
 import { AuthProvider } from './context/AuthContext';
 import { MessagesProvider } from './context/MessagesContext';
@@ -8,10 +8,16 @@ import { useTranslation } from 'react-i18next';
 import TimerForm from './components/TimerForm';
 import TimerList from './components/TimerList';
 import TimerImportExport from './components/TimerImportExport';
+import DeviceList from './components/DeviceList';
+import { initHeartbeat } from './services/deviceSync';
 
 const TimersApp: React.FC = () => {
   const { dispatch } = useTimers();
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    initHeartbeat();
+  }, []);
 
   return (
     <div>
@@ -37,6 +43,7 @@ const TimersApp: React.FC = () => {
       <TimerList />
       <TimerImportExport />
       <Messages />
+      <DeviceList />
     </div>
   );
 };

@@ -41,5 +41,12 @@
     "placeholder": {
       "name": "Nombre"
     }
+  },
+  "devices": {
+    "title": "Dispositivos",
+    "id": "ID",
+    "lastSeen": "Última señal",
+    "logs": "Registros",
+    "export": "Exportar registros"
   }
 }
