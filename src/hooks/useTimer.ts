@@ -1,20 +1,63 @@
 import { useEffect, useRef, useState } from 'react';
 import { TimerKind } from '../types';
+import { getSyncDelay, warpedNow } from '../utils/sync';
 
 // Generic timer hook supporting countdown, countup, and clock with optional scheduling
-export const useTimer = (kind: TimerKind, duration: number = 0, startAt?: number) => {
+// Persists timer progress to localStorage so timers remember state across reloads/offline
+export const useTimer = (
+  id: string,
+  kind: TimerKind,
+  duration: number = 0,
+  startAt?: number,
+) => {
+  const storageKey = `timer-progress-${id}`;
   const [elapsed, setElapsed] = useState(0);
   const [running, setRunning] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Load persisted progress
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(storageKey);
+      if (raw) {
+        const saved = JSON.parse(raw) as {
+          elapsed: number;
+          running: boolean;
+          timestamp: number;
+        };
+        let e = saved.elapsed || 0;
+        if (saved.running) {
+          e += warpedNow() - saved.timestamp;
+        }
+        setElapsed(e);
+        setRunning(saved.running);
+      }
+    } catch {
+      // ignore
+    }
+  }, [storageKey]);
+
+  // Persist progress
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        storageKey,
+        JSON.stringify({ elapsed, running, timestamp: warpedNow() }),
+      );
+    } catch {
+      // ignore
+    }
+  }, [elapsed, running, storageKey]);
+
   // start the timer at a scheduled time if provided
   useEffect(() => {
     if (startAt === undefined || running) return;
-    const now = Date.now();
-    if (startAt <= now) {
+    const now = warpedNow();
+    const startTime = startAt + getSyncDelay();
+    if (startTime <= now) {
       setRunning(true);
     } else {
-      const timeout = setTimeout(() => setRunning(true), startAt - now);
+      const timeout = setTimeout(() => setRunning(true), startTime - now);
       return () => clearTimeout(timeout);
     }
   }, [startAt, running]);
@@ -42,7 +85,7 @@ export const useTimer = (kind: TimerKind, duration: number = 0, startAt?: number
   } else if (kind === 'countup') {
     millis = elapsed;
   } else {
-    millis = Date.now();
+    millis = warpedNow();
   }
 
   return { millis, running, start, pause, reset };

@@ -24,10 +24,11 @@
  - [x] OBS/vMix integration
 
 ## Desktop & Offline
-- [ ] Electron offline mode with LAN hosting
-- [ ] Sync delay and Time Warp features
-- [ ] Timers remember progress
+- [x] Electron offline mode with LAN hosting
+ - [x] Sync delay and Time Warp features
+- [x] Timers remember progress
+- [x] Service worker for offline access
 
 ## Testing & Deployment
-- [ ] Unit tests for timer math and state
+- [x] Unit tests for timer math and state
 - [ ] Firebase Hosting and Electron packaging scripts
