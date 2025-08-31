@@ -46,10 +46,13 @@ export const MessagesProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   useEffect(() => {
     let unsub: (() => void) | undefined;
+    let isMounted = true;
     import('../services/messageSync').then(({ listenMessage }) => {
+      if (!isMounted) return;
       unsub = listenMessage((msg) => dispatch({ type: 'set', message: msg }));
     });
     return () => {
+      isMounted = false;
       if (unsub) unsub();
     };
   }, []);
