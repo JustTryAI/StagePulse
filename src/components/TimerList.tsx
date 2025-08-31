@@ -13,10 +13,10 @@ const TimerList: React.FC = () => {
 
   return (
     <div>
-      {state.timers.map((t) => (
-        <div key={t.id}>
-          <Timer config={t} />
-          <button onClick={() => dispatch({ type: 'remove', id: t.id })}>
+      {state.timers.map((timer) => (
+        <div key={timer.id}>
+          <Timer config={timer} />
+          <button onClick={() => dispatch({ type: 'remove', id: timer.id })}>
             {t('timerList.remove')}
           </button>
         </div>

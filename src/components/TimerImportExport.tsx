@@ -32,6 +32,9 @@ const TimerImportExport: React.FC = () => {
         const format = ext === 'csv' ? 'csv' : 'json';
         const timers = importTimers(text, format);
         dispatch({ type: 'setAll', timers });
+        import('../services/timerSync').then(({ saveTimer }) => {
+          timers.forEach((tmr) => saveTimer(tmr));
+        });
       } catch (err) {
         console.error(err);
         alert(t('timerList.importError'));

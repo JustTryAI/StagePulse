@@ -10,6 +10,11 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request).then((response) => response || caches.match(OFFLINE_URL)))
+    fetch(event.request).catch(() => {
+      if (event.request.mode === 'navigate') {
+        return caches.match(OFFLINE_URL);
+      }
+      return caches.match(event.request);
+    })
   );
 });

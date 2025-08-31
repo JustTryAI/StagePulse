@@ -13,7 +13,8 @@ export const useTimer = (
   const storageKey = `timer-progress-${id}`;
   const [elapsed, setElapsed] = useState(0);
   const [running, setRunning] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoStarted = useRef(false);
 
   // Load persisted progress
   useEffect(() => {
@@ -49,21 +50,30 @@ export const useTimer = (
     }
   }, [elapsed, running, storageKey]);
 
+  // reset auto-start flag if schedule changes
+  useEffect(() => {
+    autoStarted.current = false;
+  }, [startAt]);
+
   // start the timer at a scheduled time if provided
   useEffect(() => {
-    if (startAt === undefined || running) return;
+    if (startAt === undefined || running || autoStarted.current) return;
     const now = warpedNow();
     const startTime = startAt + getSyncDelay();
     if (startTime <= now) {
       setRunning(true);
+      autoStarted.current = true;
     } else {
-      const timeout = setTimeout(() => setRunning(true), startTime - now);
+      const timeout = setTimeout(() => {
+        setRunning(true);
+        autoStarted.current = true;
+      }, startTime - now);
       return () => clearTimeout(timeout);
     }
   }, [startAt, running]);
 
   useEffect(() => {
-    if (!running || kind === 'clock') return;
+    if (!running && kind !== 'clock') return;
     intervalRef.current = setInterval(() => {
       setElapsed((e) => e + 1000);
     }, 1000);

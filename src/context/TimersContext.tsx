@@ -86,12 +86,15 @@ export const TimersProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   // Listen to remote updates
   React.useEffect(() => {
     let unsubscribe: (() => void) | undefined;
+    let isMounted = true;
     import('../services/timerSync').then(({ listenTimers }) => {
+      if (!isMounted) return;
       unsubscribe = listenTimers((timers) =>
         localDispatch({ type: 'setAll', timers })
       );
     });
     return () => {
+      isMounted = false;
       if (unsubscribe) unsubscribe();
     };
   }, []);

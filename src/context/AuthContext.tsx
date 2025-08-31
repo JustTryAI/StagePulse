@@ -25,12 +25,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const unsubscribe = auth.onAuthStateChanged(async (u) => {
       setUser(u);
       if (u) {
-        const r = await getUserRole(u);
-        setRole(r);
+        try {
+          const r = await getUserRole(u);
+          setRole(r);
+        } catch {
+          setRole(null);
+        } finally {
+          setLoading(false);
+        }
       } else {
         setRole(null);
+        setLoading(false);
       }
-      setLoading(false);
     });
     return unsubscribe;
   }, []);

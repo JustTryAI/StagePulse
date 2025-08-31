@@ -14,7 +14,10 @@ export function listenTimers(callback: (timers: TimerConfig[]) => void) {
 // Add or update a timer document
 export function saveTimer(timer: TimerConfig) {
   const docRef = doc(db, 'timers', timer.id);
-  return setDoc(docRef, timer);
+  const data = Object.fromEntries(
+    Object.entries(timer).filter(([, v]) => v !== undefined)
+  ) as TimerConfig;
+  return setDoc(docRef, data);
 }
 
 // Remove a timer by id

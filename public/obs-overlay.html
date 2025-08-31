@@ -37,6 +37,13 @@
       }
     });
 
+    setInterval(() => {
+      if (active && typeof active.remaining === 'number') {
+        active.remaining = Math.max(0, active.remaining - 1000);
+        render();
+      }
+    }, 1000);
+
     function render() {
       const el = document.getElementById('timer');
       if (!active || active.remaining == null) {
